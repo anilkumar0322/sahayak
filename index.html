@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahayak - Smart Assistant</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f1f5f9;
+  color:#172554;
+}
+header{
+  background:#2563eb;
+  color:white;
+  padding:25px 20px;
+  border-radius:0 0 25px 25px;
+}
+header h1{margin:0 0 8px}
+main{padding:20px;max-width:600px;margin:auto}
+.card{
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  margin-bottom:18px;
+  box-shadow:0 3px 12px #0001;
+}
+input{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:9px;
+  margin:8px 0;
+  font-size:16px;
+}
+button{
+  background:#2563eb;
+  color:white;
+  border:0;
+  padding:12px 18px;
+  border-radius:9px;
+  font-size:15px;
+}
+li{padding:12px;border-bottom:1px solid #eee}
+footer{text-align:center;padding:20px;color:#64748b}
+</style>
+</head>
+<body>
+<header>
+<h1>🤝 Sahayak</h1>
+<p>Your Smart Personal Assistant</p>
+</header>
+<main>
+<div class="card">
+<h2>Welcome!</h2>
+<p>Your daily helper is here. Manage your tasks easily.</p>
+</div>
+
+<div class="card">
+<h3>📝 Add Your Task</h3>
+<input id="task" placeholder="Enter your task">
+<button onclick="addTask()">Add Task +</button>
+<ul id="tasks"></ul>
+</div>
+
+<div class="card">
+<h3>💡 Quick Assistance</h3>
+<p>Need help? Enter your question below.</p>
+<input id="question" placeholder="Type your question">
+<button onclick="help()">Get Assistance</button>
+<p id="answer"></p>
+</div>
+</main>
+<footer>Made with ❤️ | Sahayak App</footer>
+
+<script>
+function addTask(){
+ let input=document.getElementById("task");
+ let value=input.value.trim();
+ if(!value)return alert("Please enter a task!");
+ let li=document.createElement("li");
+ li.textContent=value+" ";
+ let btn=document.createElement("button");
+ btn.textContent="Done";
+ btn.onclick=()=>li.remove();
+ li.appendChild(btn);
+ document.getElementById("tasks").appendChild(li);
+ input.value="";
+}
+function help(){
+ let q=document.getElementById("question").value.trim();
+ document.getElementById("answer").textContent=
+ q ? "Thank you! Your question is: "+q+". Sahayak is ready to assist you." : "Please enter a question.";
+}
+</script>
+</body>
+</html>
